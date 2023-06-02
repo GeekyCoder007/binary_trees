@@ -20,13 +20,12 @@ class bin_equal {
 		inorder(root.right);
 	}
 	static boolean isIdentical(TreeNode root1,TreeNode root2){
-		if(root1==null && root2==null){
-			return true;
-		}
-		if(root1!=null && root2!=null){
-			return ((isIdentical(root1.left,root2.left))&&(isIdentical(root1.right,root2.right)));
-		}
-		return false;
+		 if(root1==null && root2==null) return true;
+		
+	   	 if(root1!=null && root2!=null) {
+	        	return (root1.data==root2.data && isIdentical(root1.left,root2.left) && isIdentical(root1.right,root2.right));
+	    	 }
+	  	 return false;
 	}
 	public static void main(String[]args) {
 		TreeNode root = new TreeNode(1);
