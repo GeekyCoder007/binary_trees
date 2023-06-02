@@ -28,6 +28,28 @@ class all_traversals_1 {
 		postorder_traversal(root.right);
 		System.out.print(root.val+" ");
 	}
+	static void level_order_traversal(TreeNode root) {
+		List<List<Integer>> levels = new ArrayList<>();
+		if(root==null) return 0;
+		// this is the iterative BFS method
+		Queue<TreeNode> q = new LinkedList<>();
+		q.offer(root);
+		
+		while(!q.isEmpty()) {
+			int size = q.size();
+			List<Integer> curr_level = new ArrayList<>();
+			for (int i=0;i<size;++i) {
+				TreeNode curr = q.poll();
+				curr_level.add(curr.val);
+				if(curr!=null && curr.left!=null) {q.offer(curr.left);}
+				if(curr!=null && curr.right!=null) {q.offer(curr.right);}
+			}
+			levels.add(curr_level);
+		}
+		//System.out.println("The level order traversal is");
+		//System.out.println(levels);
+		System.out.println("The height of the binary tree is : "+levels.size());
+	}
 	public static void main(String[]args) {
 		TreeNode root = new TreeNode(1);
 		TreeNode node1 = new TreeNode(2);
@@ -41,6 +63,7 @@ class all_traversals_1 {
 		inorder_traversal(root);System.out.println();
 		preorder_traversal(root);System.out.println();
 		postorder_traversal(root);System.out.println();
+		level_order_traversal(root);System.out.println();
 		
 	}
 }
